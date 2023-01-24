@@ -17,13 +17,13 @@ public class UsuarioServiceImpl implements UsuarioService {
     private UsuarioRepository repository;
     private PasswordEncoder encoder;
 
-    public UsuarioServiceImpl(
+    /*public UsuarioServiceImpl(
             UsuarioRepository repository,
             PasswordEncoder encoder) {
         super();
         this.repository = repository;
         this.encoder = encoder;
-    }
+    }*/
 
     @Override
     public Usuario autenticar(String email, String senha) {

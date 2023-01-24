@@ -1,6 +1,7 @@
 package com.dsousa.minhasfinancas.service;
 
 import com.dsousa.minhasfinancas.model.entity.Usuario;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
