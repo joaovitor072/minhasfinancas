@@ -1,9 +1,8 @@
 package com.dsousa.minhasfinancas.service;
 
-import com.dsousa.minhasfinancas.model.entity.Usuario;
-import org.springframework.stereotype.Service;
-
 import java.util.Optional;
+
+import com.dsousa.minhasfinancas.model.entity.Usuario;
 
 public interface UsuarioService {
 
@@ -14,4 +13,5 @@ public interface UsuarioService {
     void validarEmail(String email);
 
     Optional<Usuario> obterPorId(Long id);
+
 }

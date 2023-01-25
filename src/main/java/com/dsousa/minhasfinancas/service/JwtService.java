@@ -4,7 +4,6 @@ import com.dsousa.minhasfinancas.model.entity.Usuario;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
-import org.springframework.stereotype.Service;
 
 public interface JwtService {
 

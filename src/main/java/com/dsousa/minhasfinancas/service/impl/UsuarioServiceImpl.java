@@ -1,15 +1,16 @@
 package com.dsousa.minhasfinancas.service.impl;
 
+import java.util.Optional;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.dsousa.minhasfinancas.exception.ErroAutenticacao;
 import com.dsousa.minhasfinancas.exception.RegraNegocioException;
 import com.dsousa.minhasfinancas.model.entity.Usuario;
-import com.dsousa.minhasfinancas.repository.UsuarioRepository;
+import com.dsousa.minhasfinancas.model.repository.UsuarioRepository;
 import com.dsousa.minhasfinancas.service.UsuarioService;
-import jakarta.transaction.Transactional;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -17,13 +18,13 @@ public class UsuarioServiceImpl implements UsuarioService {
     private UsuarioRepository repository;
     private PasswordEncoder encoder;
 
-    /*public UsuarioServiceImpl(
+    public UsuarioServiceImpl(
             UsuarioRepository repository,
             PasswordEncoder encoder) {
         super();
         this.repository = repository;
         this.encoder = encoder;
-    }*/
+    }
 
     @Override
     public Usuario autenticar(String email, String senha) {

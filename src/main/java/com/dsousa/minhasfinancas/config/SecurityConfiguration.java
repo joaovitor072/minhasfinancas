@@ -3,10 +3,10 @@ package com.dsousa.minhasfinancas.config;
 import java.util.Arrays;
 import java.util.List;
 
+import com.dsousa.minhasfinancas.api.JwtTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,12 +16,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import com.dsousa.minhasfinancas.api.JwtTokenFilter;
 import com.dsousa.minhasfinancas.service.JwtService;
 import com.dsousa.minhasfinancas.service.impl.SecurityUserDetailsService;
 
@@ -41,7 +41,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public JwtTokenFilter jwtTokenFilter() {
-        return new JwtTokenFilter(jwtService, userDetailsService);
+        return new JwtTokenFilter(jwtService, userDetailsService) {
+        };
     }
 
     @Override
@@ -64,7 +65,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-               /* .addFilterBefore( jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class )*/
+                .addFilterBefore( jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class )
         ;
 
     }

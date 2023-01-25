@@ -1,5 +1,20 @@
 package com.dsousa.minhasfinancas.api.controller;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.dsousa.minhasfinancas.api.dto.AtualizaStatusDTO;
 import com.dsousa.minhasfinancas.api.dto.LancamentoDTO;
 import com.dsousa.minhasfinancas.exception.RegraNegocioException;
@@ -9,17 +24,12 @@ import com.dsousa.minhasfinancas.model.enums.StatusLancamento;
 import com.dsousa.minhasfinancas.model.enums.TipoLancamento;
 import com.dsousa.minhasfinancas.service.LancamentoService;
 import com.dsousa.minhasfinancas.service.UsuarioService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 
 @RestController
+@RequestMapping("/api/lancamentos")
 @RequiredArgsConstructor
-@RequestMapping("/lancamentos")
 public class LancamentoController {
 
     private final LancamentoService service;

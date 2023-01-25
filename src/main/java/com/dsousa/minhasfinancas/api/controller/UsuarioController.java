@@ -1,5 +1,17 @@
 package com.dsousa.minhasfinancas.api.controller;
 
+import java.math.BigDecimal;
+import java.util.Optional;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.dsousa.minhasfinancas.api.dto.TokenDTO;
 import com.dsousa.minhasfinancas.api.dto.UsuarioDTO;
 import com.dsousa.minhasfinancas.exception.ErroAutenticacao;
@@ -8,14 +20,8 @@ import com.dsousa.minhasfinancas.model.entity.Usuario;
 import com.dsousa.minhasfinancas.service.JwtService;
 import com.dsousa.minhasfinancas.service.LancamentoService;
 import com.dsousa.minhasfinancas.service.UsuarioService;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.math.BigDecimal;
-import java.util.Optional;
-
 
 @RestController
 @RequestMapping("/api/usuarios")
